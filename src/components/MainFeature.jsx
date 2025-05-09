@@ -545,9 +545,9 @@ function MainFeature({ onCalculate }) {
             onClick={() => addDigit('9')}
           >
             9
-
+          </CalculatorKey>
+          
           {/* Show different operation buttons based on calculator mode */}
-          {inputMode === 'scientific' ? (
           {
             inputMode === 'scientific' ? (
               <CalculatorKey 
@@ -559,21 +559,22 @@ function MainFeature({ onCalculate }) {
             ) : (
               /* Only show the multiply button here if not in scientific mode, 
                  as scientific mode has its own multiply button below */
-            <CalculatorKey 
-              className="calculator-key-operation"
-              onClick={() => handleOperation('*')}
-            >
-              <XIcon size={18} />
-            </CalculatorKey>
-            <CalculatorKey 
+              <CalculatorKey 
+                className="calculator-key-operation"
+                onClick={() => handleOperation('*')}
+              >
+                <XIcon size={18} />
+              </CalculatorKey>
+            )
+          }
+          
           <CalculatorKey 
             className="calculator-key-number"
             onClick={() => addDigit('4')}
           >
             4
           </CalculatorKey>
-          }
-          
+          <CalculatorKey 
             className="calculator-key-number"
             onClick={() => addDigit('5')}
           >
