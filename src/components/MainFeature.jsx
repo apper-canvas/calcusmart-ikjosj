@@ -527,35 +527,7 @@ function MainFeature({ onCalculate }) {
             </>
           )}
 
-          {inputMode === 'scientific' && (
-            <>
-              <CalculatorKey 
-                className="calculator-key-number"
-                onClick={() => addDigit('7')}
-              >
-                7
-              </CalculatorKey>
-              <CalculatorKey 
-                className="calculator-key-number"
-                onClick={() => addDigit('8')}
-              >
-                8
-              </CalculatorKey>
-              <CalculatorKey 
-                className="calculator-key-number"
-                onClick={() => addDigit('9')}
-              >
-                9
-              </CalculatorKey>
-              <CalculatorKey 
-                className="calculator-key-operation"
-                onClick={() => handleOperation('/')}
-              >
-                <DivideIcon size={18} />
-              </CalculatorKey>
-            </>
-          )}
-
+          {/* Number pad for all calculator modes */}
           <CalculatorKey 
             className="calculator-key-number"
             onClick={() => addDigit('7')}
@@ -573,8 +545,19 @@ function MainFeature({ onCalculate }) {
             onClick={() => addDigit('9')}
           >
             9
-          </CalculatorKey>
-          
+
+          {/* Show different operation buttons based on calculator mode */}
+          {inputMode === 'scientific' ? (
+            <CalculatorKey 
+              className="calculator-key-operation"
+              onClick={() => handleOperation('/')}
+            >
+              <DivideIcon size={18} />
+            </CalculatorKey>
+          ) : (
+            /* Only show the multiply button here if not in scientific mode, 
+               as scientific mode has its own multiply button below */
+            inputMode !== 'scientific' && (
           {inputMode !== 'scientific' && (
             <CalculatorKey 
               className="calculator-key-operation"
@@ -582,17 +565,7 @@ function MainFeature({ onCalculate }) {
             >
               <XIcon size={18} />
             </CalculatorKey>
-          )}
-
-          {inputMode === 'scientific' && (
             <CalculatorKey 
-              className="calculator-key-operation"
-              onClick={() => handleOperation('*')}
-            >
-              <XIcon size={18} />
-            </CalculatorKey>
-          )}
-
           <CalculatorKey 
             className="calculator-key-number"
             onClick={() => addDigit('4')}
