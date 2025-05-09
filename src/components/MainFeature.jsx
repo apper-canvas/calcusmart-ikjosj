@@ -548,17 +548,17 @@ function MainFeature({ onCalculate }) {
 
           {/* Show different operation buttons based on calculator mode */}
           {inputMode === 'scientific' ? (
-            <CalculatorKey 
-              className="calculator-key-operation"
-              onClick={() => handleOperation('/')}
-            >
-              <DivideIcon size={18} />
-            </CalculatorKey>
-          ) : (
-            /* Only show the multiply button here if not in scientific mode, 
-               as scientific mode has its own multiply button below */
-            inputMode !== 'scientific' && (
-          {inputMode !== 'scientific' && (
+          {
+            inputMode === 'scientific' ? (
+              <CalculatorKey 
+                className="calculator-key-operation"
+                onClick={() => handleOperation('/')}
+              >
+                <DivideIcon size={18} />
+              </CalculatorKey>
+            ) : (
+              /* Only show the multiply button here if not in scientific mode, 
+                 as scientific mode has its own multiply button below */
             <CalculatorKey 
               className="calculator-key-operation"
               onClick={() => handleOperation('*')}
@@ -572,7 +572,8 @@ function MainFeature({ onCalculate }) {
           >
             4
           </CalculatorKey>
-          <CalculatorKey 
+          }
+          
             className="calculator-key-number"
             onClick={() => addDigit('5')}
           >
